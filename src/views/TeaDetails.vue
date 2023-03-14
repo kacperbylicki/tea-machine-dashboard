@@ -8,6 +8,9 @@ import { ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import teaJson from '@/assets/tea.json'
 
+const route = useRoute();
+const router = useRouter();
+
 const redirect = () => {
   router.push("/");
 };
@@ -15,9 +18,6 @@ const redirect = () => {
 const getTeaFromSlug = (slug: string | string[]) => {
   return teaData.value.find((tea: any) => tea.slug === slug);
 };
-
-const route = useRoute();
-const router = useRouter();
 
 const { slug } = route.params;
 

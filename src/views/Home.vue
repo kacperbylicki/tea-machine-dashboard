@@ -8,11 +8,11 @@ import { useRouter } from 'vue-router';
 import teaJson from '@/assets/tea.json'
 import TeaPreview from '@/components/TeaPreview.vue';
 
-const teaData = ref(teaJson);
-
 const router = useRouter();
 
 const redirectToTeaDetails = (teaSlug: string) => {
   router.push(`/tea/${teaSlug}`);
 };
+
+const teaData = ref(teaJson);
 </script>
