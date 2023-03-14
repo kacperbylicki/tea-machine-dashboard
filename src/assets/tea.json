@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "name": "Matcha",
+        "description": "Lorem ipsum",
+        "slug": "matcha",
+        "iconFileName": "matcha"
+    },
+    {
+        "id": 2,
+        "name": "Pu-Erh",
+        "description": "Lorem ipsum",
+        "slug": "pu-erh",
+        "iconFileName": "matcha"
+    },
+    {
+        "id": 3,
+        "name": "Earl Grey",
+        "description": "Lorem ipsum",
+        "slug": "earl-grey",
+        "iconFileName": "matcha"
+    },
+    {
+        "id": 3,
+        "name": "Yerba Mate",
+        "description": "Lorem ipsum",
+        "slug": "yerba-mate",
+        "iconFileName": "matcha"
+    }
+]
