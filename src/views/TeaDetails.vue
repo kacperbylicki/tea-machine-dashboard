@@ -29,7 +29,7 @@ const invokeReadSerial = async () => {
 
 const invokeWriteSerial = async () => {
   try {
-    const response = await invoke("write_serial")
+    const response = await invoke("write_serial", { message: 'Hello!' })
     console.log(response);
   } catch (error) {
     console.log(error);

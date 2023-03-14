@@ -49,12 +49,11 @@ fn read_serial() -> Result<String, String> {
 }
 
 #[tauri::command]
-fn write_serial() -> Result<String, String> {
+fn write_serial(message: String) -> Result<String, String> {
     let portname = "/dev/tty.Bluetooth-Incoming-Port";
     let baudrate = 115200;
     let databits = DataBits::Eight;
     let stopbits = StopBits::One;
-    let string   = "rust";
 
     let build = serialport::new(portname,baudrate)
         .data_bits(databits)
@@ -64,9 +63,9 @@ fn write_serial() -> Result<String, String> {
 
     let mut data = String::new();
 
-    match port.write(string.as_bytes()) {
+    match port.write(message.as_bytes()) {
       Ok(_) => {
-          data.push_str(string);
+          data.push_str(&message);
           std::io::stdout().flush().unwrap();
       },
       Err(ref e) if e.kind() == std::io::ErrorKind::TimedOut => (),
