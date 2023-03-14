@@ -1,6 +1,7 @@
 <template>
     <h2>{{ tea?.name }} - Tea Details</h2>
-    <button @click="invokeHelloRust()">Hello Rust</button>
+    <button @click="invokeReadSerial()">Read Serial</button>
+    <button @click="invokeWriteSerial()">Write Serial</button>
     <button @click="redirect()">Back</button>
 </template>
 
@@ -17,9 +18,18 @@ const redirect = () => {
   router.push("/");
 };
 
-const invokeHelloRust = async () => {
+const invokeReadSerial = async () => {
   try {
-    const response = await invoke("hello_rust")
+    const response = await invoke("read_serial")
+    console.log(response);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const invokeWriteSerial = async () => {
+  try {
+    const response = await invoke("write_serial")
     console.log(response);
   } catch (error) {
     console.log(error);
