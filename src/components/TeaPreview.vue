@@ -6,8 +6,8 @@
 </template>
   
 <script setup lang="ts">
-import Icon from '@/components/Icon.vue';
 import { toRefs } from "vue";
+import Icon from '@/components/Icon.vue';
 
 const props = defineProps({
   tea: {
