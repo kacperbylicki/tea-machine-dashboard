@@ -1,76 +1,90 @@
-#![cfg_attr(
-  all(not(debug_assertions), target_os = "windows"),
-  windows_subsystem = "windows"
-)]
-
 use std::io::Write;
 use std::time::Duration;
+use std::sync::{mpsc, Arc, Mutex};
+use std::thread;
 use serialport::{DataBits, StopBits};
+use tauri::Manager;
+
+const PORT_NAME: &str = "/dev/tty.Bluetooth-Incoming-Port";
+const BAUD_RATE: u32 = 9600;
 
 fn main() {
-  tauri::Builder::default()
-    .invoke_handler(tauri::generate_handler![
-      read_serial,
-      write_serial
-    ])
-    .run(tauri::generate_context!())
-    .expect("error while running tauri application");
+    tauri::Builder::default()
+        .invoke_handler(tauri::generate_handler![write_serial, start_action])
+        .run(tauri::generate_context!())
+        .expect("error while running tauri application");
+}
+
+fn read_serial<R: tauri::Runtime>(message: String, app_handle: &tauri::AppHandle<R>) {
+  app_handle.emit_all("read_serial", message).unwrap();
 }
 
 #[tauri::command]
-fn read_serial() -> Result<String, String> {
-    let portname = "/dev/tty.Bluetooth-Incoming-Port";
-    let baudrate = 115200;
+fn start_action(app_handle: tauri::AppHandle) {
+  let (serial_output_tx, serial_output_rx) = mpsc::channel::<String>();
 
-    let port = serialport::new(portname,baudrate)
-        .timeout(Duration::from_millis(10))
-        .open();
+  let mut serial_port = serialport::new(PORT_NAME, BAUD_RATE)
+      .timeout(Duration::from_millis(1000))
+      .open()
+      .expect("Failed to open serial port");
 
-    match port {
-        Ok(mut port)=>{
-            let mut serialbuf: Vec<u8> = vec![0;100];
-            let mut data = String::new();
-            loop{
-                match port.read(serialbuf.as_mut_slice()){
-                    Ok(t) => {
-                        data.push_str(std::str::from_utf8(&serialbuf[..t]).unwrap());
-                    },
-                    Err(ref e) if e.kind() == std::io::ErrorKind::TimedOut => (),
-                    Err(e) => return Err(e.to_string())
-                }
-            }
-            Ok(data)
-        }
+  let serial_output_tx_clone = serial_output_tx.clone();
 
-        Err(e)=>{
-            Err(e.to_string())
-        }
-    }
+  let finished_flag = Arc::new(Mutex::new(false));
+  let finished_flag_clone = finished_flag.clone();
+
+  thread::spawn(move || {
+      let mut buffer = vec![0u8; 128];
+      loop {
+          let finished = finished_flag_clone.lock().unwrap();
+          if *finished {
+              break;
+          }
+
+          match serial_port.read(&mut buffer) {
+              Ok(bytes_read) => {
+                  let received_data = String::from_utf8_lossy(&buffer[..bytes_read]);
+                  if received_data.trim() == "Finished" {
+                      *finished_flag_clone.lock().unwrap() = true;
+                  }
+                  serial_output_tx_clone
+                      .send(received_data.to_string())
+                      .expect("Failed to send received data to channel");
+              }
+              Err(e) => {
+                  eprintln!("Error reading from serial port: {:?}", e);
+                  serial_output_tx_clone
+                      .send(e.to_string())
+                      .expect("Failed to send received data to channel");
+              }
+          }
+      }
+  });
+
+  tauri::async_runtime::spawn(async move {
+      while let Ok(output) = serial_output_rx.recv() {
+          read_serial(output, &app_handle);
+      }
+  });
 }
 
 #[tauri::command]
 fn write_serial(message: String) -> Result<String, String> {
-    let portname = "/dev/tty.Bluetooth-Incoming-Port";
-    let baudrate = 115200;
-    let databits = DataBits::Eight;
-    let stopbits = StopBits::One;
-
-    let build = serialport::new(portname,baudrate)
-        .data_bits(databits)
-        .stop_bits(stopbits);
+    let build = serialport::new(PORT_NAME, BAUD_RATE)
+        .data_bits(DataBits::Eight)
+        .stop_bits(StopBits::One);
 
     let mut port = build.open().map_err(|e| e.to_string())?;
-
     let mut data = String::new();
 
     match port.write(message.as_bytes()) {
-      Ok(_) => {
-          data.push_str(&message);
-          std::io::stdout().flush().unwrap();
-      },
-      Err(ref e) if e.kind() == std::io::ErrorKind::TimedOut => (),
-      Err(e) => return Err(e.to_string())
-  }
+        Ok(_) => {
+            data.push_str(&message);
+            std::io::stdout().flush().unwrap();
+        },
+        Err(ref e) if e.kind() == std::io::ErrorKind::TimedOut => (),
+        Err(e) => return Err(e.to_string())
+    }
 
-  return Ok(data)
+    Ok(data)
 }
