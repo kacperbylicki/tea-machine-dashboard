@@ -29,7 +29,12 @@ const { tea } = toRefs(props);
 
 button {
     padding: 1rem;
-    margin: 0 1rem;
+    margin-bottom: 1rem;
+}
+
+button:not(:last-child) {
+  padding: 1rem;
+  margin: auto 1rem 1rem auto;
 }
 
 h3 {
