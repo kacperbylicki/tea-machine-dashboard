@@ -2,29 +2,68 @@
     {
         "id": 1,
         "name": "Matcha",
-        "description": "Lorem ipsum",
+        "description": "Matcha is a traditional Japanese green tea that has gained popularity worldwide in recent years. It is made from shade-grown tea leaves that are ground into a fine powder, which is then whisked with hot water to make a frothy, vibrant green tea. The cultivation and processing of matcha are different from those of other types of green tea. The tea bushes are covered with shade cloths for about three weeks before harvest to stimulate growth and increase chlorophyll production. This process gives matcha its distinctive green color and boosts its flavor and nutritional content. Matcha is rich in antioxidants and nutrients such as catechins, amino acids, and caffeine, making it a healthy and energizing beverage. Its taste is vegetal and slightly bitter, with a creamy and smooth texture. Matcha is also used in Japanese tea ceremonies, where it is prepared and served with great attention to detail and etiquette. The tea ceremony is a cultural tradition that emphasizes mindfulness, simplicity, and hospitality, and it is a way to appreciate the beauty and harmony of nature and human connection.",
         "slug": "matcha",
-        "iconFileName": "matcha"
+        "iconFileName": "MatchaTea"
     },
     {
         "id": 2,
-        "name": "Pu-Erh",
-        "description": "Lorem ipsum",
+        "name": "Black Tea",
+        "description": "Black tea is a type of tea that is more oxidized than green, oolong, and white teas. This process gives black tea a stronger, richer flavor and a darker color. Black tea is made from the leaves of the Camellia sinensis plant, which is native to China and India but is now grown in many parts of the world. To produce black tea, the leaves are withered, rolled, and then left to oxidize in a warm, humid environment. This process causes the leaves to turn dark brown or black and develop a complex flavor profile that is often described as malty, earthy, or fruity. The level of oxidation can vary depending on the tea, but most black teas are fully oxidized. Black tea is a popular beverage in many parts of the world and is often enjoyed with milk and sugar. It is also used as a base for many flavored teas, such as chai and Earl Grey. Black tea is known for its caffeine content, which can provide a boost of energy and alertness. In addition to its flavor and caffeine content, black tea is also believed to have health benefits. It is rich in antioxidants, which can help to protect the body against oxidative stress and inflammation. Some studies have also suggested that black tea may help to lower the risk of heart disease, improve mental alertness, and even reduce the risk of certain types of cancer. Overall, black tea is a versatile and flavorful beverage that has been enjoyed for centuries. Whether enjoyed on its own or used as a base for other teas, black tea is a staple in many households and is sure to continue to be a popular choice for years to come.",
         "slug": "pu-erh",
-        "iconFileName": "matcha"
+        "iconFileName": "BlackTea"
     },
     {
         "id": 3,
-        "name": "Earl Grey",
-        "description": "Lorem ipsum",
+        "name": "Black Tea with lemon",
+        "description": "Black tea with lemon is a popular beverage that combines the bold, rich flavor of black tea with the tangy, refreshing taste of lemon. This drink is made by brewing black tea leaves and adding fresh lemon juice to the hot tea. The result is a flavorful and aromatic beverage that can be enjoyed hot or iced. The combination of black tea and lemon offers a variety of health benefits. Black tea is a rich source of antioxidants, which can help to protect the body against cell damage and inflammation. It also contains caffeine, which can provide a boost of energy and mental alertness. Lemon, on the other hand, is a good source of vitamin C, which can help to support the immune system and protect against infections. Black tea with lemon is a versatile beverage that can be enjoyed at any time of the day. It is often served as a morning or afternoon pick-me-up, but can also be enjoyed in the evening as a soothing and relaxing drink. Some people also add honey or sugar to their black tea with lemon to enhance the flavor and sweetness. Overall, black tea with lemon is a delicious and healthy beverage that offers a unique combination of flavors and health benefits. Whether enjoyed hot or iced, this drink is sure to be a favorite among tea lovers and those looking for a refreshing and energizing beverage.",
         "slug": "earl-grey",
-        "iconFileName": "matcha"
+        "iconFileName": "BlackTeaWithLemon"
     },
     {
-        "id": 3,
-        "name": "Yerba Mate",
-        "description": "Lorem ipsum",
+        "id": 4,
+        "name": "Chamomoile Tea",
+        "description": "Chamomile tea is a popular herbal tea that is made from the dried flowers of the chamomile plant. It has a delicate, floral flavor with a subtle sweetness and a hint of apple. Chamomile tea is caffeine-free, making it a popular choice for those looking for a soothing and calming beverage. Chamomile tea is often enjoyed as a bedtime drink, as it is known for its relaxing and calming properties. The tea contains an antioxidant called apigenin, which is believed to have a mild sedative effect on the body. As a result, chamomile tea can help to promote relaxation and improve sleep quality. In addition to its calming properties, chamomile tea is also believed to have a variety of health benefits. It has anti-inflammatory properties, which can help to reduce inflammation in the body and alleviate symptoms of conditions such as arthritis and digestive issues. Chamomile tea is also rich in antioxidants, which can help to protect the body against cell damage and reduce the risk of chronic diseases. Chamomile tea can be enjoyed hot or iced and is often served with a dash of honey or lemon to enhance the flavor. It is a popular choice among tea lovers and those looking for a natural way to promote relaxation and support their overall health and well-being. Overall, chamomile tea is a delicious and soothing beverage that offers a range of health benefits. Whether enjoyed as a bedtime drink or throughout the day, chamomile tea is a great choice for anyone looking for a delicious and healthy beverage.",
         "slug": "yerba-mate",
-        "iconFileName": "matcha"
+        "iconFileName": "ChamomoileTea"
+    },
+    {
+        "id": 5,
+        "name": "Cherry Tea",
+        "description": "Cherry tea is a delicious and fragrant herbal tea made from dried cherries or cherry blossoms. It has a sweet and fruity flavor with a subtle tartness that is reminiscent of fresh cherries. Cherry tea is often enjoyed as a hot or iced tea and can be served with or without sweetener. Cherry tea is rich in antioxidants and has anti-inflammatory properties, which can help to reduce inflammation in the body and protect against cell damage. It is also believed to have a number of other health benefits, including improved digestion, reduced risk of heart disease, and increased energy levels.In addition to its health benefits, cherry tea is a popular choice among tea lovers for its unique and delicious flavor. It can be enjoyed on its own or blended with other flavors, such as vanilla or almond, to create a more complex and layered taste. Cherry tea can be made by steeping dried cherries or cherry blossoms in hot water for several minutes, or by using a cherry tea bag or loose leaf tea. It is often served with honey or sugar to enhance the sweetness, although some people prefer to enjoy it unsweetened. Overall, cherry tea is a flavorful and healthy beverage that is enjoyed by tea lovers around the world. Whether enjoyed hot or iced, this delicious tea is sure to satisfy anyone's sweet tooth while providing a range of health benefits.",
+        "slug": "yerba-mate",
+        "iconFileName": "CherryTea"
+    },
+    
+    {
+        "id": 6,
+        "name": "Fruits Tea",
+        "description": "Fruit tea is a delicious and refreshing herbal tea made from a blend of dried fruit pieces, herbs, and spices. It has a fruity and slightly sweet flavor that is reminiscent of fresh fruit, making it a popular choice among tea lovers. Fruit tea can be made using a variety of fruits, including apple, orange, peach, strawberry, and raspberry, as well as herbs and spices such as cinnamon, cloves, and ginger. The tea is often caffeine-free, making it a great option for those looking for a soothing and relaxing beverage.        In addition to its delicious flavor, fruit tea is also believed to have a number of health benefits. It is rich in antioxidants, which can help to protect the body against cell damage and reduce the risk of chronic diseases. Fruit tea is also a great source of vitamins and minerals, including vitamin C, potassium, and magnesium. Fruit tea can be enjoyed hot or iced and is often served with honey or sugar to enhance the sweetness. It is a great option for those looking for a healthy and flavorful alternative to sugary drinks and sodas. Overall, fruit tea is a delicious and healthy beverage that is enjoyed by tea lovers around the world. With its fruity and refreshing taste and range of health benefits, fruit tea is a great choice for anyone looking for a flavorful and nutritious beverage.",
+        "slug": "yerba-mate",
+        "iconFileName": "FruitsTea"
+    },
+    {
+        "id": 7,
+        "name": "Green Tea With Orange",
+        "description": "Green tea with orange is a delicious and refreshing beverage that combines the light and grassy flavor of green tea with the sweet and tangy taste of orange. This tea is made by brewing green tea leaves and adding freshly squeezed orange juice or orange slices to the hot tea. Green tea is known for its high levels of antioxidants, which can help to protect the body against cell damage and reduce the risk of chronic diseases. It also contains caffeine, which can provide a boost of energy and mental alertness. Orange, on the other hand, is a great source of vitamin C, which can help to support the immune system and protect against infections. The combination of green tea and orange offers a range of health benefits and a unique flavor profile. Green tea with orange is often enjoyed as a morning or afternoon pick-me-up, but can also be enjoyed in the evening as a soothing and relaxing drink. Green tea with orange can be served hot or iced and is often sweetened with honey or sugar to enhance the flavor. It is a popular choice among tea lovers and those looking for a healthy and flavorful beverage. Overall, green tea with orange is a delicious and healthy beverage that offers a unique combination of flavors and health benefits. Whether enjoyed hot or iced, this drink is sure to be a favorite among tea lovers and those looking for a refreshing and energizing beverage.",
+        "slug": "GreenTeaWithOrange",
+        "iconFileName": "GreenTeaWithOrange"
+    },
+    {
+        "id": 8,
+        "name": "Raspberry Tea",
+        "description": "Raspberry tea is a delicious and refreshing herbal tea made from dried raspberry leaves and/or raspberries. It has a sweet and slightly tangy flavor that is reminiscent of fresh raspberries, making it a popular choice among tea lovers. Raspberry tea is rich in antioxidants, which can help to protect the body against cell damage and reduce the risk of chronic diseases. It is also believed to have anti-inflammatory properties and may help to reduce inflammation in the body. Raspberry tea is a great source of vitamin C and can help to support the immune system. In addition to its health benefits, raspberry tea is a delicious and versatile beverage. It can be enjoyed hot or iced and is often served with honey or sugar to enhance the sweetness. Raspberry tea can also be blended with other flavors, such as mint or lemon, to create a more complex and layered taste. Raspberry tea can be made using dried raspberry leaves or fresh raspberries, which are steeped in hot water for several minutes. Raspberry tea is often caffeine-free, making it a great option for those looking for a soothing and relaxing beverage. Overall, raspberry tea is a delicious and healthy beverage that is enjoyed by tea lovers around the world. With its sweet and tangy flavor and range of health benefits, raspberry tea is a great choice for anyone looking for a refreshing and nutritious beverage.",
+        "slug": "RaspberryTea",
+        "iconFileName": "RaspberryTea"
+    },
+    {
+        "id": 9,
+        "name": "StrawberryTea",
+        "description": "Strawberry tea is a delicious and refreshing herbal tea made from dried strawberry pieces or leaves. It has a sweet and fruity flavor that is reminiscent of fresh strawberries, making it a popular choice among tea lovers. Strawberry tea is rich in antioxidants, which can help to protect the body against cell damage and reduce the risk of chronic diseases. It is also a great source of vitamin C, which can help to support the immune system and protect against infections. In addition to its health benefits, strawberry tea is a versatile and delicious beverage that can be enjoyed hot or iced. It is often served with honey or sugar to enhance the sweetness and can also be blended with other flavors, such as mint or lemon, to create a more complex and layered taste. Strawberry tea can be made using dried strawberry pieces or leaves, which are steeped in hot water for several minutes. It is often caffeine-free, making it a great option for those looking for a soothing and relaxing beverage. Overall, strawberry tea is a delicious and healthy beverage that is enjoyed by tea lovers around the world. With its sweet and fruity flavor and range of health benefits, strawberry tea is a great choice for anyone looking for a refreshing and nutritious beverage.",
+        "slug": "StrawberryTea",
+        "iconFileName": "StrawberryTea"
     }
+    
+
+
 ]
