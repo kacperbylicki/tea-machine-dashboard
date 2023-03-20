@@ -1,6 +1,16 @@
 <template>
   <TeaDetailsNavbar />
   <h2>{{ tea?.name }} - Tea Details</h2>
+    <div style="display: inline-flex;">
+    <div style="flex-direction: column;">
+      
+      <div>
+        <Icon class="previewImage" :iconFileName="tea?.iconFileName" />
+      </div>
+    <div><button @click="makeTea()" class="makeButton">Make!  ⏵</button></div>
+    </div>
+    <div><p>{{tea?.description}}</p></div>
+    </div>
   <ActionButtons
     @writeSerial="invokeWriteSerial"
     @startListening="invokeStartAction"
@@ -27,6 +37,10 @@ const teaData = ref(teaJson);
 const tea = ref(getTeaFromSlug(teaData, slug));
 const serialResponses = ref<SerialResponse[]>([]);
 
+const makeTea = () => {
+  // router.push("makeTea");
+}
+
 const invokeWriteSerial = async () => {
   try {
     const response = await invoke("write_serial", { message: 'Hello!' })
@@ -50,3 +64,23 @@ await listen('read_serial', (event) => {
   serialResponses.value.push({ timestamp: Date.now(), message: input })
 });
 </script>
+
+<style>
+.makeButton{
+  /* height: 6em; */
+  /* width: 10em; */
+  background-color: green;
+  font-size: 3em;
+  margin: .5em;
+}
+p {
+  padding: 0.5em;
+}
+.previewImage {
+  height: 6em;
+  padding: 1rem;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+</style>
