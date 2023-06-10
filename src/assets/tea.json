@@ -7,16 +7,16 @@
         "iconFileName": "MatchaTea",
         "recipe": [
             {
-                "message": "H1-ON",
-                "delay_in_seconds": 4
+                "message": "H1-ON\n",
+                "delayInSeconds": 4
             },
             {
-                "message": "H1-OFF",
-                "delay_in_seconds": 4
+                "message": "H1-OFF\n",
+                "delayInSeconds": 4
             },
             {
-                "message": "H1-ON",
-                "delay_in_seconds": 4
+                "message": "H1-ON\n",
+                "delayInSeconds": 4
             }
         ]
     },

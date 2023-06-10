@@ -32,23 +32,28 @@ const { slug } = route.params;
 const teaData = ref(teaJson);
 const tea = ref(getTeaFromSlug(teaData, slug));
 const serialResponses = ref<SerialResponse[]>([]);
+const portId = uuidv4();
 
 const makeTea = async (tea: any) => {
-  const portId = uuidv4();
-
   try {
-      const response = await invoke("write_serial", { msg: { recipe: tea.recipe, port_id: portId }});
+    serialResponses.value = [];
 
-      console.log(response);
+    // Set up the listener once before starting the recipe.
+    await listen('read_serial', (event) => {
+      let input = event.payload
+      serialResponses.value.push({ timestamp: Date.now(), message: input })
+    });
 
-      await listen('read_serial', (event) => {
-        console.log(event)
-        let input = event.payload
-        serialResponses.value.push({ timestamp: Date.now(), message: input })
-      });
-    } catch (error) {
-      console.log(error);
+    // Using for...of loop to handle async operations properly.
+    for (const recipeStep of tea.recipe) {
+      await invoke("write_serial", { message: recipeStep.message, portId });
+
+      // Pause for the given delayInSeconds.
+      await new Promise((resolve) => setTimeout(resolve, recipeStep.delayInSeconds * 1000));
     }
+  } catch (error) {
+    console.log(error);
+  }
 };
 </script>
 
