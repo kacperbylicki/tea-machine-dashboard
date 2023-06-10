@@ -7,19 +7,14 @@
       <div>
         <Icon class="previewImage" :iconFileName="tea?.iconFileName" />
       </div>
-    <div><button @click="makeTea()" class="makeButton">Make!  ⏵</button></div>
+    <div><button @click="makeTea(tea)" class="makeButton">Make!  ⏵</button></div>
     </div>
     <div><p>{{tea?.description}}</p></div>
     </div>
-  <ActionButtons
-    @writeSerial="invokeWriteSerial"
-    @startListening="invokeStartAction"
-  />
   <SerialResponsesList :serialResponses="serialResponses" />
 </template>
 
 <script setup lang="ts">
-import ActionButtons from "@/components/ActionButtons.vue";
 import SerialResponsesList from "@/components/SerialResponsesList.vue";
 import TeaDetailsNavbar from '@/components/TeaDetailsNavbar.vue';
 import teaJson from '@/assets/tea.json'
@@ -29,6 +24,7 @@ import { invoke } from "@tauri-apps/api/tauri";
 import { listen } from "@tauri-apps/api/event";
 import { ref } from "vue";
 import { useRoute } from "vue-router";
+import { v4 as uuidv4 } from 'uuid';
 
 const route = useRoute();
 const { slug } = route.params;
@@ -37,32 +33,23 @@ const teaData = ref(teaJson);
 const tea = ref(getTeaFromSlug(teaData, slug));
 const serialResponses = ref<SerialResponse[]>([]);
 
-const makeTea = () => {
-  // router.push("makeTea");
-}
+const makeTea = async (tea: any) => {
+  const portId = uuidv4();
 
-const invokeWriteSerial = async () => {
   try {
-    const response = await invoke("write_serial", { message: 'Hello!' })
-    console.log(response);
-  } catch (error) {
-    console.log(error);
-  }
-};
+      const response = await invoke("write_serial", { msg: { recipe: tea.recipe, port_id: portId }});
 
-const invokeStartAction = async () => {
-  try {
-    await invoke("start_action")
-  } catch (error) {
-    console.log(error);
-  }
-};
+      console.log(response);
 
-await listen('read_serial', (event) => {
-  console.log(event)
-  let input = event.payload
-  serialResponses.value.push({ timestamp: Date.now(), message: input })
-});
+      await listen('read_serial', (event) => {
+        console.log(event)
+        let input = event.payload
+        serialResponses.value.push({ timestamp: Date.now(), message: input })
+      });
+    } catch (error) {
+      console.log(error);
+    }
+};
 </script>
 
 <style>
