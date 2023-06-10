@@ -34,15 +34,15 @@ const tea = ref(getTeaFromSlug(teaData, slug));
 const serialResponses = ref<SerialResponse[]>([]);
 const portId = uuidv4();
 
+// Set up the listener once before starting the recipe.
+await listen('read_serial', (event) => {
+  let input = event.payload
+  serialResponses.value.push({ timestamp: Date.now(), message: input })
+});
+
 const makeTea = async (tea: any) => {
   try {
     serialResponses.value = [];
-
-    // Set up the listener once before starting the recipe.
-    await listen('read_serial', (event) => {
-      let input = event.payload
-      serialResponses.value.push({ timestamp: Date.now(), message: input })
-    });
 
     // Using for...of loop to handle async operations properly.
     for (const recipeStep of tea.recipe) {
